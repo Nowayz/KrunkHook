@@ -5,6 +5,8 @@ Functions can be hooked by calling **`Hook`**, and unhooked by calling **`Unhook
 
 **`TrampolineByFunc`** or **`TrampolineByHook`** can be used to call the original function while bypassing the hook. These statements return the same thing, but **`TrampolineByFunc`** takes the original function as an argument while **`TrampolineByHook`** takes the hook function as an argument.
 
+**`ClearHooks`** can be called with no arguments to remove all hooks at once.
+
 
 ## Example Usage:
 
@@ -37,5 +39,6 @@ If a function begins with a branch instruction, or any instruction who's address
 Trampolines routines are built using **udis86** disassembler library to determine the instruction length of the patched instruction.  
 
 **About Trampolines**
+
 A trampoline is a small chunk of code which is allocated to allow calling the hooked function.
 The patched instruction is executed by the trampoline and the trampoline jumps into the hooked function directly after the patch. This is how the hooked function is called without executing the hook.
